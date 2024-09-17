@@ -1,7 +1,7 @@
-file(GLOB HEADER_LIST "${project_SOURCE_DIR}/include/project/*.h")
+file(GLOB HEADER_LIST "${conditionals_SOURCE_DIR}/include/conditionals/*.h")
 
-add_library(projectlib library.cpp ${HEADER_LIST})
+add_library(gradelib calculate_grade.cpp ${HEADER_LIST})
 
-target_include_directories(projectlib PUBLIC ../include)
+target_include_directories(conditionalslib PUBLIC ../include)
 
-target_compile_features(projectlib PUBLIC cxx_std_17)
+target_compile_features(conditionalslib PUBLIC cxx_std_17)

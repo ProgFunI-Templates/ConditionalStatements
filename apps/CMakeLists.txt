@@ -1,2 +1,2 @@
-add_executable(project project.cpp)
-target_compile_features(project PRIVATE cxx_std_17)
+add_executable(conditionals conditionals.cpp)
+target_compile_features(conditionals PRIVATE cxx_std_17)

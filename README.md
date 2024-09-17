@@ -1,56 +1,48 @@
-# CMake Project Template
+# Conditionals Assignment
 
-This is a template project that sets up CMake with GoogleTest as the testing framework.
+For this assignment we will be utilizing if and switch statements. First you will calculate a grade average using 4 floating point grade values, then return the letter grade character for that average. With that letter grade, you will then return a message to the user. The exact specifications are as follows:
+
+| Grade | Letter |
+|-----|------|
+| >= 89.5 | A |
+| >= 79.5 | B |
+| >= 69.5 | C |
+| >= 59.5 | D |
+| < 59.5 | F |
+
+Make sure the letter grade you return is a capital character, (defined as 'A')
+
+With the letter grade, you will print the following messages:
+
+A => Good job, you got an A! \
+B => Alright, you got a B! \
+C => Not bad, you got a C! \
+D => You can do it, you got a D! \
+F => You'll get it next time, you got an F
+
+These messages are stored in string variables that are in display_message.cpp, as:
+
+messageA, messageB, messageC, messageD, messageF 
+
+You can use those variables to define the output in your switch.
+
+I have set up two function files for you to use, calculate_grade.cpp and display_message.cpp in src. You just need to fill in the logic for each function.
+
+## How to build, compile, and test
+
+Instead of using the CMake buttons, I have found that it is easier to read the tests when building, compiling, and testing on the command line. To do that you can press ctrl+` to open the terminal, then enter the following:
 
 Build
 ```
 cmake -S . -B build
 ```
 
-Install
+Compile
 ```
 cmake --build build
 ```
 
 Test
 ```
-cd build && ctest && cd ..
+ctest --test-dir build
 ```
-
-## Required File name changes
-
-/apps/project.cpp\
-/include/project\
-/include/project/library.h\
-/src/library.cpp\
-/tests/library_test.cpp
-
-## Required Changes in Files
-
-When using in a regular project, the following needs to be changed:
-
-### ./CMakeLists.txt
-
-Line 3 Change Project to {projectname} and add a description
-
-### ./apps/
-
-Line 1 Change project and project.cpp to {projectname} and main app cpp name
-
-Line 3 Change project to {projectname}
-
-### ./src/
-
-Line 1 - Change /include/project to /include/{projectname}
-
-Line 3 - Change projectlib to {projectname}lib and change library.cpp to {libraryname}.cpp, be sure to add any additional libraries here.
-
-Line 5 - Change projectlib to {projectname}lib
-
-Line 7 - Change projectlib to {projectname}lib
-
-### ./tests/
-
-Line 14 - Change projectlib to {projectname}lib
-
-Line 25 - Change libtest and library_test to library file name
