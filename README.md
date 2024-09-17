@@ -4,11 +4,11 @@ For this assignment we will be utilizing if and switch statements. First you wil
 
 | Grade | Letter |
 |-----|------|
-| >= 89.5 | A |
-| >= 79.5 | B |
-| >= 69.5 | C |
-| >= 59.5 | D |
-| < 59.5 | F |
+| >= 90 | A |
+| >= 80 | B |
+| >= 70 | C |
+| >= 60 | D |
+| < 60 | F |
 
 Make sure the letter grade you return is a capital character, (defined as 'A')
 

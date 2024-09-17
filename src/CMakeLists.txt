@@ -1,6 +1,6 @@
 file(GLOB HEADER_LIST "${conditionals_SOURCE_DIR}/include/conditionals/*.h")
 
-add_library(gradelib calculate_grade.cpp ${HEADER_LIST})
+add_library(conditionalslib calculate_grade.cpp display_message.cpp ${HEADER_LIST})
 
 target_include_directories(conditionalslib PUBLIC ../include)
 
