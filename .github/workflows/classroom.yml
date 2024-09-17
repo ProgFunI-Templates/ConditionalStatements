@@ -1,0 +1,117 @@
+name: Autograding Tests
+'on': {}
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Build Project
+      run: cmake -S . -B build
+    - name: Compile Project
+      run: cmake --build build
+    - name: Returns A
+      id: returns-a
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Returns A
+        setup-command: ''
+        command: ctest --test-dir build -R ReturnLetterGradeTest.ReturnsA
+        timeout: 10
+        max-score: 10
+    - name: Returns B
+      id: returns-b
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Returns B
+        setup-command: ''
+        command: ctest --test-dir build -R ReturnLetterGradeTest.ReturnsB
+        timeout: 10
+        max-score: 10
+    - name: Returns C
+      id: returns-c
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Returns C
+        setup-command: ''
+        command: ctest --test-dir build -R ReturnLetterGradeTest.ReturnsC
+        timeout: 10
+        max-score: 10
+    - name: Returns D
+      id: returns-d
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Returns D
+        setup-command: ''
+        command: ctest --test-dir build -R ReturnLetterGradeTest.ReturnsD
+        timeout: 10
+        max-score: 10
+    - name: Returns F
+      id: returns-f
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Returns F
+        setup-command: ''
+        command: ctest --test-dir build -R ReturnLetterGradeTest.ReturnsF
+        timeout: 10
+        max-score: 10
+    - name: Message A
+      id: message-a
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Message A
+        setup-command: ''
+        command: ctest --test-dir build -R DisplayCorrectMessage.A
+        timeout: 10
+        max-score: 10
+    - name: Message B
+      id: message-b
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Message B
+        setup-command: ''
+        command: ctest --test-dir build -R DisplayCorrectMessage.B
+        timeout: 10
+        max-score: 10
+    - name: Message C
+      id: message-c
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Message C
+        setup-command: ''
+        command: ctest --test-dir build -R DisplayCorrectMessage.C
+        timeout: 10
+        max-score: 10
+    - name: Message D
+      id: message-d
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Message D
+        setup-command: ''
+        command: ctest --test-dir build -R DisplayCorrectMessage.D
+        timeout: 10
+        max-score: 10
+    - name: Message F
+      id: message-f
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Message F
+        setup-command: ''
+        command: ctest --test-dir build -R DisplayCorrectMessage.F
+        timeout: 10
+        max-score: 10
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        RETURNS-A_RESULTS: "${{steps.returns-a.outputs.result}}"
+        RETURNS-B_RESULTS: "${{steps.returns-b.outputs.result}}"
+        RETURNS-C_RESULTS: "${{steps.returns-c.outputs.result}}"
+        RETURNS-D_RESULTS: "${{steps.returns-d.outputs.result}}"
+        RETURNS-F_RESULTS: "${{steps.returns-f.outputs.result}}"
+      with:
+        runners: returns-a, returns-b, returns-c, returns-d, returns-f, message-a, message-b, message-c, message-d, message-f
