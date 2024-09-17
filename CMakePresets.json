@@ -1,0 +1,17 @@
+{
+    "version": 6,
+    "configurePresets": [
+        {
+            "name": "default",
+            "displayName": "Default Config",
+            "generator": "Ninja",
+            "binaryDir": "${workspaceRoot}/build"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "default",
+            "configurePreset": "default"
+        }
+    ]
+}
